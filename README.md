@@ -180,7 +180,7 @@ npx expo start --lan
 
 - "Navigate" - Starts the 3D depth grid and object detection to guide your walking path.
 
-- "Read Text" - Takes a high-res photo, applies high-contrast filters, and extracts text.
+- "Read Text" - Takes a high-res photo, applies high-contrast filters, and extracts text *ensure text in frame when you command*.
 
 - "Describe Scene" - Generates a conversational description of the room ahead.
 
@@ -192,7 +192,7 @@ npx expo start --lan
 
 - "Next" / "Again" / "Look" - Instantly repeats the current action (e.g., scanning the next page of a document).
 
-- Fluid Switching - To change tools, just say the new tool's name. Saying "Navigate" while reading a book will automatically close the reading tool and start navigation.
+**Fluid Switching - To change tools, just say the new tool's name. Saying "Navigate" while reading a book will automatically close the reading tool and start navigation.**
 
 *The Deaf/Blind Communicator*
 
