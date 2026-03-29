@@ -99,6 +99,9 @@ Smart Navigation: Fuses YOLOv8 with DepthAnything to provide real-time spatial a
 
 **🚀 Setup & Installation Guide**
 
+*Clone Repository:*
+
+git clone https://github.com/tt703/Safepath-AI.git
 
 *Prerequisites*
 
