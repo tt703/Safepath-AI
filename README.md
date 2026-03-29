@@ -1,25 +1,28 @@
-SafePath AI: Multimodal Accessibility Assistant
+**SafePath AI**
 SafePath AI is a voice-controlled, multimodal accessibility ecosystem designed to bridge the gap between visually impaired and deaf users. Powered by a custom conversational agent named "Nova", the app fuses real-time computer vision, spatial depth mapping, and natural language processing into a single, seamless state machine.
 
-🎯 The Core Problem
+**Youtube Link**
+https://youtu.be/TQrA4Fa7jEs
+
+**🎯 The Core Problem**
 Standard accessibility applications are heavily fragmented. A visually impaired user typically needs one app to read text, another to navigate obstacles, and a completely different tool to describe their environment. Furthermore, real-time, two-way communication between a blind individual and a deaf individual is virtually impossible with standard tools.
 
 Additionally, combining continuous camera streams, audio recording, and AI inference on a mobile device usually results in severe hardware crashes, overlapping audio, and melted CPUs.
 
-💡 The SafePath Solution
+**💡 The SafePath Solution**
 SafePath AI solves this fragmentation through Fluid Mode Switching, Depth-First Sensor Fusion, and a Strict Mutex Architecture. Nova acts as a Master Controller, allowing the user to seamlessly switch between complex AI pipelines using only their voice, without dropped frames or audio collisions.
 
-🧠 Advanced Systems Architecture (How It Works)
+**🧠 Advanced Systems Architecture (How It Works)**
 To make this app enterprise-grade and fail-proof, several complex engineering hurdles were solved:
 
-1. Depth-First Sensor Fusion (The "Mean" vs. "Percentile" Fix)
+**1. Depth-First Sensor Fusion (The "Mean" vs. "Percentile" Fix)**
 Traditional object detection (YOLO) draws rectangular boxes around objects. However, a chair has gaps, meaning the bounding box captures both the chair (close) and the wall behind it (far). Averaging the depth of that box causes the AI to think the object is at a safe distance.
 
 The Fix: SafePath divides the screen into a 3-Zone Grid (Left, Center, Right) and uses the 95th Percentile of the depth array. It mathematically isolates the closest 5% of pixels, completely ignoring the background.
 
 The Result: Even if YOLO doesn't recognize a blank glass door or a thin pole, the Depth Grid instantly triggers a physical collision alarm, making the app incredibly sensitive and safe for a blind user.
 
-2. The Context-Aware State Machine
+**2. The Context-Aware State Machine***
 Nova operates on a Master/Slave context architecture to prevent logic collisions.
 
 Master Mode (IDLE): Nova listens for universal commands ("Navigate", "Read", "Sign").
@@ -28,24 +31,24 @@ Context Mode: Once inside a service (like Reading), Nova locks her state. If you
 
 Fluid Switching: If you are reading a book and say "Navigate", Nova's Master Kill Switch dynamically tears down the OCR intervals and instantly boots up the YOLO/Depth pipeline without forcing you to return to a home screen first.
 
-3. The "Earpiece Trap" & Audio Hardware Locks
+**3. The "Earpiece Trap" & Audio Hardware Locks**
 When iOS/Android OS detects a microphone opening while audio is playing, it panics and forces all sound into the tiny phone earpiece (assuming a phone call is happening).
 
 The Fix: SafePath implements a strict onDone Promise wrapper around the expo-speech engine. The React Native thread literally freezes until Nova's vocal cords stop moving. It then applies a dynamic 250ms hardware buffer, giving the physical phone relays time to click over, before safely opening the microphone.
 
-4. Mutex Locks & Re-entrancy Protection
+**4. Mutex Locks & Re-entrancy Protection**
 When a phone takes a picture every 1.5 seconds and sends it to a Python server, network lag can cause frames to pile up, crashing the app.
 
 The Fix: A strict isProcessingTickRef acts as a traffic cop. The camera is mathematically forbidden from taking a new photo until the Python server has returned a 200 OK for the previous one.
 
-🌟 Core Features
+**🌟 Core Features**
 Smart Navigation: Fuses YOLOv8 with DepthAnything to provide real-time spatial awareness ("Obstacle dead ahead", "Couch on the left").
 
 Two-Way Sign Language Communicator: A dedicated quarantine UI. It translates MediaPipe gesture recognition into spoken words for a blind user, and uses Whisper AI to transcribe the blind user's voice into massive, high-contrast text for the deaf user to read.
 
 Context-Aware OCR & Scene Description: Uses EasyOCR and BLIP to read text and describe environments. Features a massive, 140x140 pixel context microphone button designed specifically for visually impaired users to easily tap and scan the next page.
 
-🏗️ Tech Stack
+**🏗️ Tech Stack**
 Frontend (React Native / Expo)
 
 Core: React Native, Expo Router.
@@ -58,7 +61,7 @@ Backend (Python FastAPI)
 
 Server: uvicorn and FastAPI processing base64 image streams in milliseconds.
 
-AI Models:
+**AI Models:**
 
 ultralytics (YOLOv8) - Object Detection
 
@@ -72,7 +75,7 @@ mediapipe - Gesture Recognition
 
 openai/whisper - Voice Transcription & Intent Routing (Fuzzy matching)
 
-🚀 Setup & Installation Guide
+**🚀 Setup & Installation Guide**
 Prerequisites
 Node.js and npm installed.
 
@@ -122,7 +125,7 @@ Open your phone's default Camera app (iOS) or the Expo Go app (Android) and scan
 
 When the app boots, grant the requested Camera and Microphone permissions.
 
-📖 User Guide
+**📖 User Guide**
 Nova is entirely voice-controlled. Tap the massive microphone button on the screen to wake her up, then speak your command. You can also tap the button again while recording to instantly process your voice without waiting.
 
 Master Commands (Home Screen)
