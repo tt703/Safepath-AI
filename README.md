@@ -69,123 +69,129 @@ Context-Aware OCR & Scene Description: Uses EasyOCR and BLIP to read text and de
 **🏗️ Tech Stack**
 
 
-Frontend (React Native / Expo)
+- Frontend (React Native / Expo)
 
-Core: React Native, Expo Router.
+- Core: React Native, Expo Router.
 
-Hardware Interfacing: expo-camera, expo-speech, expo-av (custom loud speaker forcing).
+- Hardware Interfacing: expo-camera, expo-speech, expo-av (custom loud speaker forcing).
 
-UI/UX: expo-blur for contextual overlays, Animated API for breathing UI effects.
+- UI/UX: expo-blur for contextual overlays, Animated API for breathing UI effects.
 
-Backend (Python FastAPI)
+- Backend (Python FastAPI)
 
-Server: uvicorn and FastAPI processing base64 image streams in milliseconds.
+- Server: uvicorn and FastAPI processing base64 image streams in milliseconds.
 
 **AI Models:**
 
 
 
-ultralytics (YOLOv8) - Object Detection
+- ultralytics (YOLOv8) - Object Detection
 
-transformers (DepthAnything) - 3D Spatial Mapping
+- transformers (DepthAnything) - 3D Spatial Mapping
 
-easyocr - Text Extraction
+- easyocr - Text Extraction
 
-Salesforce/blip-image-captioning-base - Scene Description
+- Salesforce/blip-image-captioning-base - Scene Description
 
-mediapipe - Gesture Recognition
+- mediapipe - Gesture Recognition
 
-openai/whisper - Voice Transcription & Intent Routing (Fuzzy matching)
+- openai/whisper - Voice Transcription & Intent Routing (Fuzzy matching)
 
 **🚀 Setup & Installation Guide**
 
 
 Prerequisites
-Node.js and npm installed.
 
-Python 3.9+ installed.
+ - Node.js and npm installed.
 
-CRITICAL: Your mobile device and your laptop must be connected to the exact same Wi-Fi network.
+ - Python 3.9+ installed.
 
-Step 1: Backend Setup (Python)
-Open a terminal and navigate to the backend folder:
+ - CRITICAL: Your mobile device and your laptop must be connected to the exact same Wi-Fi network.
 
-Bash
+**Step 1: Backend Setup (Python)**
+
+*Open a terminal and navigate to the backend folder:*
+
+*Bash*
 cd safepath-backend
 Install the required AI dependencies:
 
-Bash
+*Bash*
 pip install -r requirements.txt
 Start the FastAPI server. You must bind it to 0.0.0.0 to allow external network traffic from your phone:
 
-Bash
+*Bash*
 uvicorn main:app --host 0.0.0.0 --port 8000
-Step 2: Frontend Setup (React Native)
-Find your laptop's local IPv4 address.
 
-Windows: Open Command Prompt and type ipconfig. Look for IPv4 Address.
+**Step 2: Frontend Setup (React Native)**
 
-Mac: Open Terminal and type ifconfig or check Network Settings.
+- Find your laptop's local IPv4 address.
 
-Open safepath-mobile/app/index.tsx in your code editor.
+- Windows: Open Command Prompt and type ipconfig. Look for IPv4 Address.
 
-At the top of the file, locate the BACKEND_IP variable and replace it with your exact IP address:
+- Mac: Open Terminal and type ifconfig or check Network Settings.
+
+- Open safepath-mobile/app/index.tsx in your code editor.
+
+**At the top of the file on line 54, locate the BACKEND_IP variable and replace it with your exact IP address:**
 
 TypeScript
-const BACKEND_IP = '192.168.X.X'; // Replace this!
-Open a new terminal, navigate to the mobile folder, and install packages:
+*const BACKEND_IP = '192.168.X.X'; // Replace this!*
 
-Bash
+**Open a new terminal, navigate to the mobile folder, and install packages:**
+
+*Bash*
 cd safepath-mobile
 npm install
 Start the Expo server using the Local Area Network flag:
 
-Bash
+*Bash*
 npx expo start --lan
-Step 3: Device Linking
-Download the Expo Go app on your physical smartphone (Apple App Store or Google Play Store).
 
-Open your phone's default Camera app (iOS) or the Expo Go app (Android) and scan the QR code generated in your laptop's terminal.
+**Step 3: Device Linking**
+- Download the Expo Go app on your physical smartphone (Apple App Store or Google Play Store).
 
-When the app boots, grant the requested Camera and Microphone permissions.
+- Open your phone's default Camera app (iOS) or the Expo Go app (Android) and scan the QR code generated in your laptop's terminal.
+
+- When the app boots, grant the requested Camera and Microphone permissions.
 
 **📖 User Guide**
 
 
-Nova is entirely voice-controlled. Tap the massive microphone button on the screen to wake her up, then speak your command. You can also tap the button again while recording to instantly process your voice without waiting.
+*Nova is entirely voice-controlled. Tap the massive microphone button on the screen to wake her up, then speak your command. You can also tap the button again while recording to instantly process your voice without waiting.*
 
-Master Commands (Home Screen)
-From the idle screen, say any of these to boot a specific AI engine:
+**Master Commands (Home Screen)**
+*From the idle screen, say any of these to boot a specific AI engine:*
 
-"Navigate" - Starts the 3D depth grid and object detection to guide your walking path.
+- "Navigate" - Starts the 3D depth grid and object detection to guide your walking path.
 
-"Read Text" - Takes a high-res photo, applies high-contrast filters, and extracts text.
+- "Read Text" - Takes a high-res photo, applies high-contrast filters, and extracts text.
 
-"Describe Scene" - Generates a conversational description of the room ahead.
+- "Describe Scene" - Generates a conversational description of the room ahead.
 
-"Translate Sign" - Opens the two-way deaf/blind communicator.
+- "Translate Sign" - Opens the two-way deaf/blind communicator.
 
-Contextual Commands (Inside a Service)
-When you are actively using a service (like Reading), Nova locks into that context.
+**Contextual Commands (Inside a Service)**
+*When you are actively using a service (like Reading), Nova locks into that context.*
 
 "Next" / "Again" / "Look" - Instantly repeats the current action (e.g., scanning the next page of a document).
 
-Fluid Switching - To change tools, just say the new tool's name. Saying "Navigate" while reading a book will automatically close the reading tool and start navigation.
+- Fluid Switching - To change tools, just say the new tool's name. Saying "Navigate" while reading a book will automatically close the reading tool and start navigation.
 
-The Deaf/Blind Communicator
+*The Deaf/Blind Communicator*
 When you say "Translate Sign", Nova enters a quarantine state.
 
-Camera: Watches the deaf person's hands and speaks translated gestures out loud.
+- Camera: Watches the deaf person's hands and speaks translated gestures out loud.
 
-Microphone: When the blind user taps the mic and replies, Nova stops listening for commands and instead transcribes their exact words into massive, high-contrast text on the screen for the deaf user.
+- Microphone: When the blind user taps the mic and replies, Nova stops listening for commands and instead transcribes their exact words into massive, high-contrast text on the screen for the deaf user.
 
-The Universal Exit
-To completely reset the state machine and return to the idle home screen, tap the microphone and say:
+**The Universal Exit**
+*To completely reset the state machine and return to the idle home screen, tap the microphone and say:*
 
-"Stop"
+- "Stop"
 
-"Exit"
+- "Exit"
 
-"Cancel"
+- "Cancel"
 
-"Home"
+- "Home"
