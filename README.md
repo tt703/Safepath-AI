@@ -100,7 +100,7 @@ Context-Aware OCR & Scene Description: Uses EasyOCR and BLIP to read text and de
 **🚀 Setup & Installation Guide**
 
 
-Prerequisites
+*Prerequisites*
 
  - Node.js and npm installed.
 
@@ -113,14 +113,17 @@ Prerequisites
 *Open a terminal and navigate to the backend folder:*
 
 *Bash*
+
 cd safepath-backend
 Install the required AI dependencies:
 
 *Bash*
+
 pip install -r requirements.txt
 Start the FastAPI server. You must bind it to 0.0.0.0 to allow external network traffic from your phone:
 
 *Bash*
+
 uvicorn main:app --host 0.0.0.0 --port 8000
 
 **Step 2: Frontend Setup (React Native)**
@@ -135,17 +138,20 @@ uvicorn main:app --host 0.0.0.0 --port 8000
 
 **At the top of the file on line 54, locate the BACKEND_IP variable and replace it with your exact IP address:**
 
-TypeScript
-*const BACKEND_IP = '192.168.X.X'; // Replace this!*
+*TypeScript*
+
+**const BACKEND_IP = '192.168.X.X'; // Replace this!**
 
 **Open a new terminal, navigate to the mobile folder, and install packages:**
 
 *Bash*
+
 cd safepath-mobile
 npm install
 Start the Expo server using the Local Area Network flag:
 
 *Bash*
+
 npx expo start --lan
 
 **Step 3: Device Linking**
@@ -161,6 +167,7 @@ npx expo start --lan
 *Nova is entirely voice-controlled. Tap the massive microphone button on the screen to wake her up, then speak your command. You can also tap the button again while recording to instantly process your voice without waiting.*
 
 **Master Commands (Home Screen)**
+
 *From the idle screen, say any of these to boot a specific AI engine:*
 
 - "Navigate" - Starts the 3D depth grid and object detection to guide your walking path.
@@ -172,13 +179,15 @@ npx expo start --lan
 - "Translate Sign" - Opens the two-way deaf/blind communicator.
 
 **Contextual Commands (Inside a Service)**
+
 *When you are actively using a service (like Reading), Nova locks into that context.*
 
-"Next" / "Again" / "Look" - Instantly repeats the current action (e.g., scanning the next page of a document).
+- "Next" / "Again" / "Look" - Instantly repeats the current action (e.g., scanning the next page of a document).
 
 - Fluid Switching - To change tools, just say the new tool's name. Saying "Navigate" while reading a book will automatically close the reading tool and start navigation.
 
 *The Deaf/Blind Communicator*
+
 When you say "Translate Sign", Nova enters a quarantine state.
 
 - Camera: Watches the deaf person's hands and speaks translated gestures out loud.
@@ -186,6 +195,7 @@ When you say "Translate Sign", Nova enters a quarantine state.
 - Microphone: When the blind user taps the mic and replies, Nova stops listening for commands and instead transcribes their exact words into massive, high-contrast text on the screen for the deaf user.
 
 **The Universal Exit**
+
 *To completely reset the state machine and return to the idle home screen, tap the microphone and say:*
 
 - "Stop"
