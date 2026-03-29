@@ -167,7 +167,7 @@ npx expo start --lan
 
 - Open your phone's default Camera app (iOS) or the Expo Go app (Android) and scan the QR code generated in your laptop's terminal.
 
-- When the app boots, grant the requested Camera and Microphone permissions.
+- When the app boots, grant the requested Camera and Microphone permissions, **note! if app switches to small speaker toggle the device output to loud speaker**.
 
 **📖 User Guide**
 
