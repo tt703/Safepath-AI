@@ -110,17 +110,19 @@ Smart Navigation: Fuses YOLOv8 with DepthAnything to provide real-time spatial a
 
 **Step 1: Backend Setup (Python)**
 
-*Open a terminal and navigate to the backend folder:*
+**Open a terminal and navigate to the backend folder:**
 
 *Bash*
 
 cd safepath-backend
-Install the required AI dependencies:
+
+**Install the required AI dependencies:**
 
 *Bash*
 
 pip install -r requirements.txt
-Start the FastAPI server. You must bind it to 0.0.0.0 to allow external network traffic from your phone:
+
+**Start the FastAPI server. You must bind it to 0.0.0.0 to allow external network traffic from your phone:**
 
 *Bash*
 
@@ -147,8 +149,11 @@ uvicorn main:app --host 0.0.0.0 --port 8000
 *Bash*
 
 cd safepath-mobile
+
 npm install
-Start the Expo server using the Local Area Network flag:
+
+
+**Start the Expo server using the Local Area Network flag:**
 
 *Bash*
 
