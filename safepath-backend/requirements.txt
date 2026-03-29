@@ -1,0 +1,12 @@
+fastapi
+uvicorn
+python-multipart
+ultralytics
+transformers
+torch
+easyocr
+mediapipe
+Pillow
+numpy
+openai-whisper
+thefuzz
